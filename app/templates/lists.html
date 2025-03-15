@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Tasks{% endblock title %}
+
+{% block content %}
+<h1>Tasks</h1>
+<a href="{{ url_for('get_create_form') }}" class="btn btn-success mb-3">Create Task</a>
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Summary</th>
+      <th scope="col">Description</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody id="task-list">
+    {% for task in tasks %}
+    <tr>
+      <th scope="row">{{ task["id"] }}</th>
+      <td>{{ task["name"] }}</td>
+      <td>{{ task["summary"] }}</td>
+      <td>{{ task["description"] }}</td>
+      <td>
+        <a href="/tasks/{{ task['id'] }}" class="btn btn-warning">
+          <i class="bi bi-eye"></i>
+        </a>
+        <a href="/tasks/{{ task['id'] }}/delete" class="btn btn-danger delete-task-btn" data-task-id="{{ task['id'] }}">
+          <i class="bi bi-trash"></i>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<script src="{{ url_for('static', filename='js/tasks.js') }}"></script>
+{% endblock content %}

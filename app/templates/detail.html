@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Task Details{% endblock title %}
+
+{% block content %}
+<h1>Task Details</h1>
+<table class="table table-dark">
+  <tr>
+    <th>ID</th>
+    <td>{{ task.id }}</td>
+  </tr>
+  <tr>
+    <th>Name</th>
+    <td>{{ task.name }}</td>
+  </tr>
+  <tr>
+    <th>Summary</th>
+    <td>{{ task.summary }}</td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td>{{ task.description }}</td>
+  </tr>
+</table>
+<a href="{{ url_for('get_tasks') }}">Back to Task List</a>
+{% endblock content %}

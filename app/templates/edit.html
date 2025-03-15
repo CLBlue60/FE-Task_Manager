@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Task{% endblock title %}
+
+{% block content %}
+<h1>Edit Task</h1>
+{% if task and task.id %}
+<form id="edit-task-form">
+    {% else %}
+    <form id="edit-task-form">
+        {% endif %}
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{ task['name'] }}" required>
+        </div>
+        <div>
+            <label for="summary">Summary:</label>
+            <textarea id="summary" name="summary" required>{{ task['summary'] }}</textarea>
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" value="{{ task['description'] }}" required>
+        </div>
+        <div>
+            <button type="submit">Update Task</button>
+        </div>
+    </form>
+
+    <script src="{{ url_for('static', filename='js/edit_task.js') }}"></script>
+    {% endblock %}

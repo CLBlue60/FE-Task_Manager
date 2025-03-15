@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Create New Task
+{% endblock title %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h1 class="text-center mb-4">Create New Task</h1>
+        <form id="create-task-form">
+            <div class="mb-3">
+                <label for="name" class="form-label">Task Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="summary" class="form-label">Summary</label>
+                <input type="text" class="form-control" id="summary" name="summary" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-success">Create Task</button>
+        </form>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/create_task.js') }}"></script>
+{% endblock content %}
